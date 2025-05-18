@@ -1,0 +1,9 @@
+[submodule "workspaces/kb-engineering"]
+	path = workspaces/kb-engineering
+	url = https://github.com/vincentbenzo/kb-engineering.git
+[submodule "workspaces/kb-grc"]
+	path = workspaces/kb-grc
+	url = https://github.com/vincentbenzo/kb-grc.git
+[submodule "workspaces/kb-networking"]
+	path = workspaces/kb-networking
+	url = https://github.com/vincentbenzo/kb-networking.git
