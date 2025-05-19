@@ -8,6 +8,14 @@
 {% block scripts %}
 {{ super() }}
 <script>
+  // Function to handle workspace selection change
+  function changeWorkspace(workspacePath) {
+    if (workspacePath) {
+      // Navigate to the selected workspace
+      window.location.href = workspacePath;
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     // Create the workspace selector
     const selectorContainer = document.createElement('div');
@@ -18,12 +26,12 @@
     selectElement.setAttribute('onchange', 'changeWorkspace(this.value)');
     selectElement.setAttribute('aria-label', 'Select workspace');
     
-    // Add options
+    // Add options with FULL URLs for separate repositories
     const options = [
-      { value: '/kb-platform/', text: 'Main' },
-      { value: '/kb-engineering/', text: 'Engineering' },
-      { value: '/kb-grc/', text: 'GRC' },
-      { value: '/kb-networking/', text: 'Networking' }
+      { value: 'https://vincentbenzo.github.io/kb-platform/', text: 'Main' },
+      { value: 'https://vincentbenzo.github.io/kb-engineering/', text: 'Engineering' },
+      { value: 'https://vincentbenzo.github.io/kb-grc/', text: 'GRC' },
+      { value: 'https://vincentbenzo.github.io/kb-networking/', text: 'Networking' }
     ];
     
     options.forEach(option => {
@@ -41,16 +49,11 @@
       headerTitle.parentNode.insertBefore(selectorContainer, headerTitle.nextSibling);
     }
     
-    // Set the current workspace in dropdown
-    const pathSegments = window.location.pathname.split('/');
-    let repoName = '';
-    
-    if (pathSegments.length >= 2) {
-      repoName = '/' + pathSegments[1] + '/';
-    }
+    // Set the current workspace in dropdown based on full URL
+    const currentUrl = window.location.href;
     
     for (let i = 0; i < selectElement.options.length; i++) {
-      if (selectElement.options[i].value === repoName) {
+      if (currentUrl.includes(selectElement.options[i].value)) {
         selectElement.selectedIndex = i;
         break;
       }
