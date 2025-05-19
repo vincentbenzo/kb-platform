@@ -18,34 +18,36 @@
       {% include ".icons/material/menu" ~ ".svg" %}
     </label>
     
-    <!-- Header title -->
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            {{ config.site_name }}
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            {% if page.meta and page.meta.title %}
-              {{ page.meta.title }}
-            {% else %}
-              {{ page.title }}
-            {% endif %}
-          </span>
+    <!-- Header title with adjacent workspace selector -->
+    <div class="md-header__title-wrapper">
+      <div class="md-header__title" data-md-component="header-title">
+        <div class="md-header__ellipsis">
+          <div class="md-header__topic">
+            <span class="md-ellipsis">
+              {{ config.site_name }}
+            </span>
+          </div>
+          <div class="md-header__topic" data-md-component="header-topic">
+            <span class="md-ellipsis">
+              {% if page.meta and page.meta.title %}
+                {{ page.meta.title }}
+              {% else %}
+                {{ page.title }}
+              {% endif %}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
-    
-    <!-- Center workspace selector -->
-    <div class="workspace-selector-center">
-      <select id="workspace-dropdown" onchange="changeWorkspace(this.value)" aria-label="Select workspace">
-        <option value="/kb-platform/">Main</option>
-        <option value="/kb-engineering/">Engineering</option>
-        <option value="/kb-grc/">GRC</option>
-        <option value="/kb-networking/">Networking</option>
-      </select>
+      
+      <!-- Adjacent workspace selector -->
+      <div class="workspace-selector-adjacent">
+        <select id="workspace-dropdown" onchange="changeWorkspace(this.value)" aria-label="Select workspace">
+          <option value="/kb-platform/">Main</option>
+          <option value="/kb-engineering/">Engineering</option>
+          <option value="/kb-grc/">GRC</option>
+          <option value="/kb-networking/">Networking</option>
+        </select>
+      </div>
     </div>
     
     <div class="md-header__right">
