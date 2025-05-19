@@ -49,34 +49,25 @@
       </select>
     </div>
     
-    <!-- Color palette toggle -->
+    <!-- Color palette toggle - Using the correct theme toggle implementation -->
     {% if config.theme.palette %}
       {% if config.theme.palette | length > 1 %}
         <div class="md-header__option">
-          <div class="md-select">
-            <button class="md-header__button md-icon" aria-label="{{ lang.t('palette.button') }}">
-              {% set icon = config.theme.palette | selectattr("toggle.icon") | first %}
-              {% set __icon = ".icons/" ~ icon.toggle.icon ~ ".svg" %}
-              {% include __icon %}
+          {% for option in config.theme.palette %}
+            {% set scheme = option.scheme | replace(" ", "-") | lower %}
+            {% set primary = option.primary | replace(" ", "-") | lower %}
+            {% set accent  = option.accent  | replace(" ", "-") | lower %}
+            <button
+              class="md-header__button md-icon"
+              title="{{ option.toggle.name }}"
+              type="button"
+              data-md-color-scheme="{{ scheme }}"
+              data-md-color-primary="{{ primary }}"
+              data-md-color-accent="{{ accent }}"
+            >
+              {% include ".icons/" ~ option.toggle.icon ~ ".svg" %}
             </button>
-            <div class="md-select__inner">
-              <ul class="md-select__list">
-                {% for option in config.theme.palette %}
-                  {% set palette = option.scheme | replace(" ", "-") | lower %}
-                  {% set icon = option.toggle.icon %}
-                  <li class="md-select__item">
-                    <button class="md-select__link" data-md-color-scheme="{{ palette }}" data-md-color-primary="{{ option.primary }}" data-md-color-accent="{{ option.accent }}">
-                      {% set icon = ".icons/" ~ icon ~ ".svg" %}
-                      {% include icon %}
-                      <div class="md-ellipsis">
-                        {{ option.toggle.name }}
-                      </div>
-                    </button>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       {% endif %}
     {% endif %}
