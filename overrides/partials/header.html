@@ -1,55 +1,34 @@
-{% extends "base.html" %}
+{% extends "partials/header.html" %}
 
-{% block header %}
-<header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header.title') }}">
-    <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}">
-      {% include "partials/logo.html" %}
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      {% include ".icons/material/menu" ~ ".svg" %}
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            {{ config.site_name }}
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            {% if page.meta and page.meta.title %}
-              {{ page.meta.title }}
-            {% else %}
-              {{ page.title }}
-            {% endif %}
-          </span>
-        </div>
-      </div>
+{% block site_name %}
+<!-- Original site name block replaced with custom one including workspace selector -->
+<div class="md-header__title" data-md-component="header-title">
+  <div class="md-header__ellipsis">
+    <div class="md-header__topic">
+      <span class="md-ellipsis">
+        {{ config.site_name }}
+      </span>
     </div>
-    
-    <!-- Workspace Selector Dropdown -->
-    <div class="workspace-selector">
-      <select id="workspace-dropdown" onchange="changeWorkspace(this.value)">
-        <option value="">Select Workspace</option>
-        <option value="/kb-platform/">Main</option>
-        <option value="/kb-engineering/">Engineering</option>
-        <option value="/kb-grc/">GRC</option>
-        <option value="/kb-networking/">Networking</option>
-      </select>
+    <div class="md-header__topic" data-md-component="header-topic">
+      <span class="md-ellipsis">
+        {% if page.meta and page.meta.title %}
+          {{ page.meta.title }}
+        {% else %}
+          {{ page.title }}
+        {% endif %}
+      </span>
     </div>
-    
-    {% if "search" in config.plugins %}
-      <label class="md-header__button md-icon" for="__search">
-        {% include ".icons/material/magnify.svg" %}
-      </label>
-      {% include "partials/search.html" %}
-    {% endif %}
-    {% if config.repo_url %}
-      <div class="md-header__source">
-        {% include "partials/source.html" %}
-      </div>
-    {% endif %}
-  </nav>
-</header>
+  </div>
+</div>
+
+<!-- Workspace Selector Dropdown -->
+<div class="workspace-selector">
+  <select id="workspace-dropdown" onchange="changeWorkspace(this.value)">
+    <option value="">Select Workspace</option>
+    <option value="/kb-platform/">Main</option>
+    <option value="/kb-engineering/">Engineering</option>
+    <option value="/kb-grc/">GRC</option>
+    <option value="/kb-networking/">Networking</option>
+  </select>
+</div>
 {% endblock %}
