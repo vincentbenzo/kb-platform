@@ -72,28 +72,28 @@ select#workspace-dropdown {
   padding: 0.6rem !important;
 }
 
-/* Light theme styling */
+/* Light theme styling with specific colors */
 [data-md-color-scheme="default"] #workspace-dropdown,
 [data-md-color-scheme="default"] .workspace-selector-inline select,
 [data-md-color-scheme="default"] select#workspace-dropdown {
-  background-color: hsla(0, 0%, 0%, 0.07) !important;
-  color: var(--md-default-fg-color) !important;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(0, 0, 0, 0.54)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-color: #2f3c86 !important;
+  color: #b6bad4 !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23b6bad4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
 }
 
 [data-md-color-scheme="default"] #workspace-dropdown:hover,
 [data-md-color-scheme="default"] #workspace-dropdown:focus,
 [data-md-color-scheme="default"] .workspace-selector-inline select:hover,
 [data-md-color-scheme="default"] .workspace-selector-inline select:focus {
-  background-color: hsla(0, 0%, 0%, 0.12) !important;
+  background-color: #3a4a9e !important; /* Slightly lighter shade for hover */
   outline: none !important;
   box-shadow: none !important;
 }
 
 [data-md-color-scheme="default"] #workspace-dropdown option,
 [data-md-color-scheme="default"] .workspace-selector-inline select option {
-  background-color: var(--md-default-bg-color) !important;
-  color: var(--md-default-fg-color) !important;
+  background-color: #2f3c86 !important;
+  color: #b6bad4 !important;
   padding: 0.6rem !important;
 }
 
