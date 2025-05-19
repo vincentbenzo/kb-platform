@@ -55,3 +55,50 @@
 [data-md-color-scheme="default"] .workspace-selector-inline select:focus {
   background-color: var(--md-default-bg-color--light);
 }
+
+/* Target the actual select element with higher specificity and !important */
+#workspace-dropdown,
+.workspace-selector-inline select,
+select#workspace-dropdown {
+  /* Match search box appearance */
+  background-color: hsla(var(--md-hue,0), 0%, 0%, 0.26) !important;
+  color: var(--md-default-fg-color) !important;
+  border: none !important;
+  border-radius: 0.1rem !important;
+  padding: 0.5rem 2rem 0.5rem 0.7rem !important;
+  font-size: 0.8rem !important;
+  transition: background-color 125ms, color 125ms !important;
+  font-family: var(--md-text-font-family, "") !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(255, 255, 255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.4rem center !important;
+  background-size: 1rem !important;
+}
+
+/* Hover and focus effects */
+#workspace-dropdown:hover,
+#workspace-dropdown:focus,
+.workspace-selector-inline select:hover,
+.workspace-selector-inline select:focus {
+  background-color: hsla(var(--md-hue,0), 0%, 0%, 0.36) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Dropdown options */
+#workspace-dropdown option,
+.workspace-selector-inline select option {
+  background-color: var(--md-default-bg-color) !important;
+  color: var(--md-default-fg-color) !important;
+  padding: 0.6rem !important;
+}
+
+/* Light theme adjustments */
+[data-md-color-scheme="default"] #workspace-dropdown,
+[data-md-color-scheme="default"] .workspace-selector-inline select {
+  background-color: var(--md-default-bg-color--lighter) !important;
+  color: var(--md-default-fg-color) !important;
+}
