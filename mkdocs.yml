@@ -1,6 +1,6 @@
 site_name: Knowledge Base Platform
-site_url: https://your-org.github.io/knowledge-base-platform/
-repo_url: https://github.com/your-org/knowledge-base-platform
+site_url: https://vincentbenzo.github.io/kb-platform/
+repo_url: https://github.com/vincentbenzo/kb-platform
 edit_uri: edit/main/docs/
 
 theme:
@@ -37,7 +37,7 @@ extra_css:
   - assets/stylesheets/extra.css
 
 extra_javascript:
-  - javascripts/workspace-selector.js
+  - docs/javascripts/workspace-selector.js
 
 markdown_extensions:
   - admonition
