@@ -37,7 +37,7 @@ extra_css:
   - assets/stylesheets/extra.css
 
 extra_javascript:
-  - docs/javascripts/workspace-selector.js
+  - javascripts/workspace-selector.js
 
 markdown_extensions:
   - admonition
