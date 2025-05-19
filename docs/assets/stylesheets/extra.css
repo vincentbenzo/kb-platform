@@ -1,23 +1,13 @@
-/* Title wrapper to position title and workspace selector together */
-.md-header__title-wrapper {
-  display: flex;
+/* Inline workspace selector styling */
+.workspace-selector-inline {
+  display: inline-flex;
   align-items: center;
-  flex: 1;
-}
-
-/* Header title adjustments */
-.md-header__title {
-  margin-right: 1rem;
-}
-
-/* Adjacent workspace selector styling */
-.workspace-selector-adjacent {
-  display: flex;
-  align-items: center;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
   height: 48px;
 }
 
-.workspace-selector-adjacent select {
+.workspace-selector-inline select {
   appearance: none;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
@@ -34,40 +24,17 @@
   min-width: 135px;
 }
 
-.workspace-selector-adjacent select:hover, 
-.workspace-selector-adjacent select:focus {
+.workspace-selector-inline select:hover, 
+.workspace-selector-inline select:focus {
   background-color: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
   outline: none;
 }
 
-.workspace-selector-adjacent select option {
+.workspace-selector-inline select option {
   background-color: var(--md-primary-bg-color);
   color: var(--md-primary-fg-color);
   padding: 0.6rem;
-}
-
-/* Header right section for search and theme toggle */
-.md-header__right {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-}
-
-/* Theme toggle formatting */
-.md-header__option {
-  display: flex;
-  align-items: center;
-  padding: 0 0.4rem;
-}
-
-.md-header__button {
-  color: var(--md-primary-bg-color);
-  opacity: 0.8;
-}
-
-.md-header__button:hover {
-  opacity: 1;
 }
 
 /* Dark mode colors to match Material for MkDocs slate theme */
@@ -88,42 +55,49 @@
   background-color: #4051b5;
 }
 
-[data-md-color-scheme="slate"] .workspace-selector-adjacent select {
+[data-md-color-scheme="slate"] .workspace-selector-inline select {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-[data-md-color-scheme="slate"] .workspace-selector-adjacent select:hover,
-[data-md-color-scheme="slate"] .workspace-selector-adjacent select:focus {
+[data-md-color-scheme="slate"] .workspace-selector-inline select:hover,
+[data-md-color-scheme="slate"] .workspace-selector-inline select:focus {
   background-color: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
+/* Help keep the site title visible */
+.md-header__title {
+  margin-right: 0;
+}
+
+.md-header__inner {
+  justify-content: flex-start;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 76.1875em) {
-  .workspace-selector-adjacent select {
+  .workspace-selector-inline {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+  }
+  
+  .workspace-selector-inline select {
     font-size: 0.7rem;
     padding: 0.35rem 1.8rem 0.35rem 0.6rem;
     min-width: 120px;
-  }
-  
-  .md-header__title {
-    margin-right: 0.5rem;
   }
 }
 
 /* For very small screens */
 @media screen and (max-width: 600px) {
-  .md-header__title-wrapper {
-    flex-wrap: wrap;
-  }
-  
-  .workspace-selector-adjacent {
-    margin-top: 0.1rem;
+  .workspace-selector-inline {
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
     height: 40px;
   }
   
-  .workspace-selector-adjacent select {
+  .workspace-selector-inline select {
     max-width: 110px;
     padding: 0.25rem 1.5rem 0.25rem 0.5rem;
     font-size: 0.65rem;
