@@ -5,7 +5,7 @@ edit_uri: edit/main/docs/
 
 theme:
   name: material
-  custom_dir: overrides
+  custom_dir: theme/overrides
   features:
     - navigation.instant
     - navigation.tracking
@@ -39,10 +39,10 @@ theme:
     logo: material/book-open-page-variant
 
 extra_css:
-  - assets/stylesheets/extra.css
+  - theme/assets/stylesheets/extra.css
 
 extra_javascript:
-  - javascripts/workspace-selector.js
+  - theme/javascripts/workspace-selector.js
 
 markdown_extensions:
   - admonition
