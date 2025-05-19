@@ -1,74 +1,92 @@
-/* Workspace Selector Styling */
-.workspace-selector {
-  display: inline-flex;
+/* Center workspace selector styling */
+.workspace-selector-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
   align-items: center;
-  height: 2.4rem;
-  padding: 0 0.4rem;
-  margin: 0 0.4rem;
+  height: 48px; /* Match header height */
+  z-index: 2; /* Ensure it's above other elements */
 }
 
-.workspace-selector select {
+.workspace-selector-center select {
   appearance: none;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 4px;
   color: var(--md-primary-bg-color);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  padding: 0.4rem 1.8rem 0.4rem 0.6rem;
+  padding: 0.5rem 2rem 0.5rem 0.8rem;
   cursor: pointer;
   transition: all 0.2s ease;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.5rem center;
   background-size: 0.8rem;
-  max-width: 150px;
+  min-width: 150px;
 }
 
-.workspace-selector select:hover, 
-.workspace-selector select:focus {
+.workspace-selector-center select:hover, 
+.workspace-selector-center select:focus {
   background-color: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
   outline: none;
 }
 
-.workspace-selector select option {
+.workspace-selector-center select option {
   background-color: var(--md-primary-bg-color);
   color: var(--md-default-fg-color);
   padding: 0.6rem;
   font-weight: normal;
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 76.1875em) {
-  .workspace-selector {
-    height: 2.2rem;
-    padding: 0 0.3rem;
-    margin: 0 0.3rem;
-  }
-  
-  .workspace-selector select {
-    font-size: 0.65rem;
-    padding: 0.3rem 1.6rem 0.3rem 0.5rem;
-    max-width: 120px;
-  }
+/* Makes the header work with the centered element */
+.md-header__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 
-/* For very small screens, make sure workspace selector remains visible */
-@media screen and (max-width: 600px) {
-  .workspace-selector select {
-    max-width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+/* Fix formatting for theme toggle, now in right section */
+.md-header__option {
+  display: flex;
+  align-items: center;
 }
 
 /* Dark mode adjustments */
-[data-md-color-scheme="slate"] .workspace-selector select {
+[data-md-color-scheme="slate"] .workspace-selector-center select {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-[data-md-color-scheme="slate"] .workspace-selector select:hover,
-[data-md-color-scheme="slate"] .workspace-selector select:focus {
+[data-md-color-scheme="slate"] .workspace-selector-center select:hover,
+[data-md-color-scheme="slate"] .workspace-selector-center select:focus {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 76.1875em) {
+  .workspace-selector-center {
+    position: relative;
+    left: auto;
+    transform: none;
+    margin: 0 auto;
+  }
+  
+  .workspace-selector-center select {
+    font-size: 0.7rem;
+    padding: 0.4rem 1.8rem 0.4rem 0.6rem;
+    min-width: 120px;
+  }
+  
+  /* Adjust header to use flex layout on mobile */
+  .md-header__inner {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .md-header__title {
+    flex: 1 1 100%;
+    order: 3;
+  }
 }
