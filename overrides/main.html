@@ -1,91 +1,19 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
-<!-- Additional head elements -->
-<meta name="custom-override" content="active">
 {{ super() }}
+<meta name="custom-override" content="active">
 {% endblock %}
 
-{% block header %}
-<header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header.title') }}">
-    <!-- Logo -->
-    <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}">
-      {% include "partials/logo.html" %}
-    </a>
-    
-    <!-- Menu button for mobile -->
-    <label class="md-header__button md-icon" for="__drawer">
-      {% include ".icons/material/menu" ~ ".svg" %}
-    </label>
-    
-    <!-- Header title -->
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            {{ config.site_name }}
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            {% if page.meta and page.meta.title %}
-              {{ page.meta.title }}
-            {% else %}
-              {{ page.title }}
-            {% endif %}
-          </span>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Workspace Selector Dropdown -->
-    <div class="workspace-selector">
-      <select id="workspace-dropdown" onchange="changeWorkspace(this.value)" aria-label="Select workspace">
-        <option value="/kb-platform/">Main</option>
-        <option value="/kb-engineering/">Engineering</option>
-        <option value="/kb-grc/">GRC</option>
-        <option value="/kb-networking/">Networking</option>
-      </select>
-    </div>
-    
-    <!-- Color palette toggle - Using the correct theme toggle implementation -->
-    {% if config.theme.palette %}
-      {% if config.theme.palette | length > 1 %}
-        <div class="md-header__option">
-          {% for option in config.theme.palette %}
-            {% set scheme = option.scheme | replace(" ", "-") | lower %}
-            {% set primary = option.primary | replace(" ", "-") | lower %}
-            {% set accent  = option.accent  | replace(" ", "-") | lower %}
-            <button
-              class="md-header__button md-icon"
-              title="{{ option.toggle.name }}"
-              type="button"
-              data-md-color-scheme="{{ scheme }}"
-              data-md-color-primary="{{ primary }}"
-              data-md-color-accent="{{ accent }}"
-            >
-              {% include ".icons/" ~ option.toggle.icon ~ ".svg" %}
-            </button>
-          {% endfor %}
-        </div>
-      {% endif %}
-    {% endif %}
-    
-    <!-- Search button -->
-    {% if "search" in config.plugins %}
-      <label class="md-header__button md-icon" for="__search">
-        {% include ".icons/material/magnify.svg" %}
-      </label>
-      {% include "partials/search.html" %}
-    {% endif %}
-    
-    <!-- Repository information -->
-    {% if config.repo_url %}
-      <div class="md-header__source">
-        {% include "partials/source.html" %}
-      </div>
-    {% endif %}
-  </nav>
-</header>
+{% block site_nav %}
+<!-- Inject the workspace selector before calling the parent implementation -->
+<div class="workspace-selector md-header-nav__tool">
+  <select id="workspace-dropdown" onchange="changeWorkspace(this.value)" aria-label="Select workspace">
+    <option value="/kb-platform/">Main</option>
+    <option value="/kb-engineering/">Engineering</option>
+    <option value="/kb-grc/">GRC</option>
+    <option value="/kb-networking/">Networking</option>
+  </select>
+</div>
+{{ super() }}
 {% endblock %}

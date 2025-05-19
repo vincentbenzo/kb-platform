@@ -1,107 +1,74 @@
 /* Workspace Selector Styling */
 .workspace-selector {
-  margin-right: 1rem;
-  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 2.4rem;
+  padding: 0 0.4rem;
+  margin: 0 0.4rem;
 }
 
 .workspace-selector select {
   appearance: none;
-  background-color: var(--md-primary-fg-color);
+  background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 4px;
   color: var(--md-primary-bg-color);
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  padding: 0.4rem 1.8rem 0.4rem 0.6rem;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.5rem center;
-  background-size: 1rem;
+  background-size: 0.8rem;
+  max-width: 150px;
 }
 
 .workspace-selector select:hover, 
 .workspace-selector select:focus {
-  background-color: var(--md-primary-fg-color--dark);
+  background-color: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
   outline: none;
 }
 
 .workspace-selector select option {
   background-color: var(--md-primary-bg-color);
-  color: var(--md-primary-fg-color);
-  padding: 0.75rem;
+  color: var(--md-default-fg-color);
+  padding: 0.6rem;
   font-weight: normal;
-}
-
-/* Custom dropdown menu styles when dropdown is open */
-.workspace-selector select option:hover,
-.workspace-selector select option:focus,
-.workspace-selector select option:checked {
-  background-color: var(--md-primary-fg-color--light);
-  color: var(--md-primary-bg-color);
 }
 
 /* Responsive adjustments */
 @media screen and (max-width: 76.1875em) {
   .workspace-selector {
-    margin-right: 0.5rem;
+    height: 2.2rem;
+    padding: 0 0.3rem;
+    margin: 0 0.3rem;
   }
   
   .workspace-selector select {
-    font-size: 0.8rem;
-    padding: 0.5rem 2rem 0.5rem 0.8rem;
+    font-size: 0.65rem;
+    padding: 0.3rem 1.6rem 0.3rem 0.5rem;
+    max-width: 120px;
+  }
+}
+
+/* For very small screens, make sure workspace selector remains visible */
+@media screen and (max-width: 600px) {
+  .workspace-selector select {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
 /* Dark mode adjustments */
 [data-md-color-scheme="slate"] .workspace-selector select {
-  background-color: var(--md-primary-fg-color);
-  border-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 [data-md-color-scheme="slate"] .workspace-selector select:hover,
 [data-md-color-scheme="slate"] .workspace-selector select:focus {
-  background-color: var(--md-primary-fg-color--dark);
-  border-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
 }
-
-/* Enhanced Search Bar Styling */
-.md-search__form {
-  background-color: rgba(0, 0, 0, 0.26);
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-}
-
-.md-search__form:hover {
-  background-color: rgba(0, 0, 0, 0.38);
-}
-
-.md-search__input {
-  color: var(--md-primary-bg-color);
-}
-
-.md-search__input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.md-search__input:hover::placeholder {
-  color: rgba(255, 255, 255, 0.8);
-}
-
-/* Dark/Light Mode Toggle Enhancements */
-.md-header__option {
-  margin-right: 0.5rem;
-}
-
-.md-select__link {
-  transition: background-color 0.2s ease;
-}
-
-.md-select__link:hover {
-  background-color: var(--md-primary-fg-color--dark);
-}
-
-/* Make sure these styles appear AFTER the workspace selector styles */
