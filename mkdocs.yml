@@ -17,25 +17,22 @@ theme:
     - search.share
     - content.code.copy
   palette:
-    # Palette toggle for automatic mode
-    - media: "(prefers-color-scheme)"
+    # Dark mode (primary option)
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
       toggle:
-        icon: material/brightness-auto
+        icon: material/brightness-4
         name: Switch to light mode
-
-    # Palette toggle for light mode
+    # Light mode (secondary option)
     - media: "(prefers-color-scheme: light)"
-      scheme: default 
+      scheme: default
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-
-    # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
   font:
     text: Roboto
     code: Roboto Mono
@@ -47,7 +44,6 @@ extra_css:
 
 extra_javascript:
   - javascripts/workspace-selector.js
-  - javascripts/theme-toggle.js
 
 markdown_extensions:
   - admonition
@@ -75,4 +71,3 @@ plugins:
 
 nav:
   - Home: index.md
-  # Dynamically loaded workspaces will appear here

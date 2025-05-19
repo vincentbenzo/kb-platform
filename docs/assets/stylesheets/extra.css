@@ -1,105 +1,70 @@
-/* Inline workspace selector styling */
-.workspace-selector-inline {
-  display: inline-flex;
-  align-items: center;
-  padding-left: 0.8rem;
-  padding-right: 0.8rem;
-  height: 48px;
-}
+/* Additional styles to help match the official Material for MkDocs dark theme */
 
-.workspace-selector-inline select {
-  appearance: none;
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
-  color: var(--md-primary-bg-color);
-  font-size: 0.75rem;
-  padding: 0.4rem 2rem 0.4rem 0.7rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.5rem center;
-  background-size: 0.8rem;
-  min-width: 135px;
-}
-
-.workspace-selector-inline select:hover, 
-.workspace-selector-inline select:focus {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
-  outline: none;
-}
-
-.workspace-selector-inline select option {
-  background-color: var(--md-primary-bg-color);
-  color: var(--md-primary-fg-color);
-  padding: 0.6rem;
-}
-
-/* Dark mode colors to match Material for MkDocs slate theme */
+/* Make sure slate theme uses the correct colors */
 [data-md-color-scheme="slate"] {
-  --md-default-bg-color: #1e1e1e;
-  --md-default-fg-color: #f5f5f5;
-  --md-primary-fg-color: #4051b5;
-  --md-primary-bg-color: #fff;
-  --md-accent-fg-color: #526cfe;
+  --md-hue: 232;
+  --md-default-fg-color: hsla(var(--md-hue), 75%, 95%, 1);
+  --md-default-fg-color--light: hsla(var(--md-hue), 75%, 90%, 0.62);
+  --md-default-fg-color--lighter: hsla(var(--md-hue), 75%, 90%, 0.32);
+  --md-default-fg-color--lightest: hsla(var(--md-hue), 75%, 90%, 0.12);
+  --md-default-bg-color: hsla(var(--md-hue), 15%, 21%, 1);
+  --md-default-bg-color--light: hsla(var(--md-hue), 15%, 21%, 0.54);
+  --md-default-bg-color--lighter: hsla(var(--md-hue), 15%, 21%, 0.26);
+  --md-default-bg-color--lightest: hsla(var(--md-hue), 15%, 21%, 0.07);
+  
+  --md-code-fg-color: hsla(var(--md-hue), 18%, 86%, 1);
+  --md-code-bg-color: hsla(var(--md-hue), 15%, 15%, 1);
+  
+  --md-typeset-a-color: var(--md-primary-fg-color);
+  --md-typeset-mark-color: hsla(#{hex2hsl($clr-yellow-500)}, 0.3);
+  
+  --md-accent-fg-color: hsla(#{hex2hsl($clr-indigo-a200)}, 1);
+  --md-accent-fg-color--transparent: hsla(#{hex2hsl($clr-indigo-a200)}, 0.1);
 }
 
 [data-md-color-scheme="slate"] .md-header {
-  background-color: #1a1a1a;
-  color: #fff;
+  background-color: hsla(var(--md-hue), 15%, 12%, 0.87);
 }
 
 [data-md-color-scheme="slate"] .md-tabs {
-  background-color: #4051b5;
+  background-color: hsla(var(--md-hue), 15%, 12%, 0.87);
 }
 
+/* Workspace selector styling for slate theme */
 [data-md-color-scheme="slate"] .workspace-selector-inline select {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
+  background-color: hsla(var(--md-hue), 75%, 30%, 0.3);
+  border-color: hsla(var(--md-hue), 75%, 60%, 0.3);
+  color: var(--md-default-fg-color);
 }
 
 [data-md-color-scheme="slate"] .workspace-selector-inline select:hover,
 [data-md-color-scheme="slate"] .workspace-selector-inline select:focus {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
+  background-color: hsla(var(--md-hue), 75%, 30%, 0.4);
+  border-color: hsla(var(--md-hue), 75%, 60%, 0.5);
 }
 
-/* Help keep the site title visible */
-.md-header__title {
-  margin-right: 0;
+[data-md-color-scheme="slate"] .workspace-selector-inline select option {
+  background-color: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
 }
 
-.md-header__inner {
-  justify-content: flex-start;
+/* Navigation styles for slate */
+[data-md-color-scheme="slate"] .md-nav__link:focus,
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+  color: var(--md-accent-fg-color);
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 76.1875em) {
-  .workspace-selector-inline {
-    padding-left: 0.4rem;
-    padding-right: 0.4rem;
-  }
-  
-  .workspace-selector-inline select {
-    font-size: 0.7rem;
-    padding: 0.35rem 1.8rem 0.35rem 0.6rem;
-    min-width: 120px;
-  }
+/* Table of contents */
+[data-md-color-scheme="slate"] .md-nav--secondary {
+  border-left: .05rem solid var(--md-default-fg-color--lightest);
 }
 
-/* For very small screens */
-@media screen and (max-width: 600px) {
-  .workspace-selector-inline {
-    padding-left: 0.3rem;
-    padding-right: 0.3rem;
-    height: 40px;
-  }
-  
-  .workspace-selector-inline select {
-    max-width: 110px;
-    padding: 0.25rem 1.5rem 0.25rem 0.5rem;
-    font-size: 0.65rem;
-  }
+/* Footer */
+[data-md-color-scheme="slate"] .md-footer-nav {
+  background-color: hsla(var(--md-hue), 15%, 12%, 0.87);
+  color: var(--md-default-fg-color);
+}
+
+[data-md-color-scheme="slate"] .md-footer-meta {
+  background-color: hsla(var(--md-hue), 15%, 10%, 1);
 }
