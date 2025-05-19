@@ -7,3 +7,6 @@
 [submodule "workspaces/kb-networking"]
 	path = workspaces/kb-networking
 	url = https://github.com/vincentbenzo/kb-networking.git
+[submodule "theme"]
+	path = theme
+	url = https://github.com/vincentbenzo/kb-theme.git
