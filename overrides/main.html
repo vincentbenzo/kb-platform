@@ -9,12 +9,17 @@
 {% block header %}
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header.title') }}">
+    <!-- Logo -->
     <a href="{{ config.site_url | default(nav.homepage.url, true) | url }}" title="{{ config.site_name }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}">
       {% include "partials/logo.html" %}
     </a>
+    
+    <!-- Menu button for mobile -->
     <label class="md-header__button md-icon" for="__drawer">
       {% include ".icons/material/menu" ~ ".svg" %}
     </label>
+    
+    <!-- Header title -->
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
@@ -36,7 +41,7 @@
     
     <!-- Workspace Selector Dropdown -->
     <div class="workspace-selector">
-      <select id="workspace-dropdown" onchange="changeWorkspace(this.value)">
+      <select id="workspace-dropdown" onchange="changeWorkspace(this.value)" aria-label="Select workspace">
         <option value="/kb-platform/">Main</option>
         <option value="/kb-engineering/">Engineering</option>
         <option value="/kb-grc/">GRC</option>
@@ -44,12 +49,47 @@
       </select>
     </div>
     
+    <!-- Color palette toggle -->
+    {% if config.theme.palette %}
+      {% if config.theme.palette | length > 1 %}
+        <div class="md-header__option">
+          <div class="md-select">
+            <button class="md-header__button md-icon" aria-label="{{ lang.t('palette.button') }}">
+              {% set icon = config.theme.palette | selectattr("toggle.icon") | first %}
+              {% set __icon = ".icons/" ~ icon.toggle.icon ~ ".svg" %}
+              {% include __icon %}
+            </button>
+            <div class="md-select__inner">
+              <ul class="md-select__list">
+                {% for option in config.theme.palette %}
+                  {% set palette = option.scheme | replace(" ", "-") | lower %}
+                  {% set icon = option.toggle.icon %}
+                  <li class="md-select__item">
+                    <button class="md-select__link" data-md-color-scheme="{{ palette }}" data-md-color-primary="{{ option.primary }}" data-md-color-accent="{{ option.accent }}">
+                      {% set icon = ".icons/" ~ icon ~ ".svg" %}
+                      {% include icon %}
+                      <div class="md-ellipsis">
+                        {{ option.toggle.name }}
+                      </div>
+                    </button>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+    
+    <!-- Search button -->
     {% if "search" in config.plugins %}
       <label class="md-header__button md-icon" for="__search">
         {% include ".icons/material/magnify.svg" %}
       </label>
       {% include "partials/search.html" %}
     {% endif %}
+    
+    <!-- Repository information -->
     {% if config.repo_url %}
       <div class="md-header__source">
         {% include "partials/source.html" %}

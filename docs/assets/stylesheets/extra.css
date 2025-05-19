@@ -67,3 +67,41 @@
   background-color: var(--md-primary-fg-color--dark);
   border-color: rgba(255, 255, 255, 0.5);
 }
+
+/* Enhanced Search Bar Styling */
+.md-search__form {
+  background-color: rgba(0, 0, 0, 0.26);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.md-search__form:hover {
+  background-color: rgba(0, 0, 0, 0.38);
+}
+
+.md-search__input {
+  color: var(--md-primary-bg-color);
+}
+
+.md-search__input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.md-search__input:hover::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Dark/Light Mode Toggle Enhancements */
+.md-header__option {
+  margin-right: 0.5rem;
+}
+
+.md-select__link {
+  transition: background-color 0.2s ease;
+}
+
+.md-select__link:hover {
+  background-color: var(--md-primary-fg-color--dark);
+}
+
+/* Make sure these styles appear AFTER the workspace selector styles */
