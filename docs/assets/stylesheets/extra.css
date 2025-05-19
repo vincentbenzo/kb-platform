@@ -1,17 +1,57 @@
-/* Properly style workspace selector for dark theme */
+/* Style workspace selector to match search box in dark theme */
 [data-md-color-scheme="slate"] .workspace-selector-inline select {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #ffffff;
+  /* Match search box appearance */
+  background-color: hsla(var(--md-hue,0), 0%, 0%, 0.26);
+  color: var(--md-default-fg-color);
+  border: none;
+  border-radius: 0.1rem;
+  padding: 0.6rem 2rem 0.6rem 0.7rem;
+  font-size: 0.8rem;
+  transition: background-color 125ms, color 125ms;
+  min-width: 150px;
+  font-family: var(--md-text-font-family, "");
 }
 
+/* Hover and focus effects to match search box */
 [data-md-color-scheme="slate"] .workspace-selector-inline select:hover,
 [data-md-color-scheme="slate"] .workspace-selector-inline select:focus {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
+  background-color: hsla(var(--md-hue,0), 0%, 0%, 0.36);
+  outline: none;
+  box-shadow: none;
 }
 
+/* Custom dropdown arrow with better visibility */
+[data-md-color-scheme="slate"] .workspace-selector-inline select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(255, 255, 255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.4rem center;
+  background-size: 1rem;
+}
+
+/* Style dropdown options */
 [data-md-color-scheme="slate"] .workspace-selector-inline select option {
-  background-color: #1e1e1e;
-  color: #ffffff;
+  background-color: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  padding: 0.6rem;
+}
+
+/* Match search box size and alignment */
+.workspace-selector-inline {
+  display: inline-flex;
+  align-items: center;
+  height: 2.4rem;
+}
+
+/* Light theme adjustments */
+[data-md-color-scheme="default"] .workspace-selector-inline select {
+  background-color: var(--md-default-bg-color--lighter);
+  color: var(--md-default-fg-color);
+  border: none;
+  border-radius: 0.1rem;
+  font-family: var(--md-text-font-family, "");
+}
+
+[data-md-color-scheme="default"] .workspace-selector-inline select:hover,
+[data-md-color-scheme="default"] .workspace-selector-inline select:focus {
+  background-color: var(--md-default-bg-color--light);
 }
