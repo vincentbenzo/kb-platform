@@ -17,12 +17,14 @@ theme:
     - search.share
     - content.code.copy
   palette:
+    # Light mode
     - scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
+    # Dark mode
     - scheme: slate
       primary: indigo
       accent: indigo
@@ -40,6 +42,7 @@ extra_css:
 
 extra_javascript:
   - javascripts/workspace-selector.js
+  - javascripts/theme-toggle.js
 
 markdown_extensions:
   - admonition
@@ -58,7 +61,6 @@ markdown_extensions:
 plugins:
   - search:
       lang: en
-      separator: '[\s\-,:!=\[\]()"/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
   - git-revision-date-localized:
       enable_creation_date: true
   - minify:
