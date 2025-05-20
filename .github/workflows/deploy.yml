@@ -35,23 +35,11 @@ jobs:
       
       - name: Prepare CSS from theme
         run: |
-          # Create the directory structure in docs
           mkdir -p docs/assets/stylesheets
-          
-          # Copy the CSS file from theme to docs
           cp theme/assets/stylesheets/extra.css docs/assets/stylesheets/
-          
-          # Show the copied CSS file
-          echo "CSS file copied to docs/assets/stylesheets:"
-          ls -la docs/assets/stylesheets/
           
       - name: Build main platform
         run: mkdocs build
-        
-      - name: Verify CSS in built site
-        run: |
-          echo "CSS files in the built site:"
-          find site -name "*.css"
           
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
