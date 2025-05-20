@@ -68,10 +68,40 @@ jobs:
         run: |
           mkdir -p docs/assets/config
           cp workspaces.yml docs/assets/config/
+
+      - name: Prepare workspace configuration
+        run: |
+          echo "Preparing workspace configuration..."
+          mkdir -p docs/assets/config
+          cp workspaces.yml docs/assets/config/
+              
+          # Validate YAML format
+          echo "Validating workspaces.yml content:"
+          cat workspaces.yml
+              
+          # Ensure the file exists in the expected location
+          if [ -f docs/assets/config/workspaces.yml ]; then
+            echo "✅ workspaces.yml successfully copied to docs/assets/config/"
+          else
+            echo "❌ Failed to copy workspaces.yml"
+            exit 1
+          fi
           
       - name: Build main platform
         run: mkdocs build
           
+      - name: Verify build output
+        run: |
+          echo "Verifying build output..."
+          if [ -f site/assets/config/workspaces.yml ]; then
+            echo "✅ workspaces.yml exists in the built site"
+            cat site/assets/config/workspaces.yml
+          else
+            echo "❌ workspaces.yml not found in the built site"
+            echo "Listing site/assets directory:"
+            find site/assets -type f | sort
+          fi
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
