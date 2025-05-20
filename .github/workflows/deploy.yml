@@ -17,7 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
           submodules: recursive
@@ -32,8 +33,28 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
+      - name: Debug file structure
+        run: |
+          echo "Listing theme directory:"
+          ls -la theme/
+          echo "Listing theme assets directory:"
+          ls -la theme/assets/
+          echo "Checking if CSS file exists:"
+          ls -la theme/assets/stylesheets/
+      
+      - name: Ensure CSS is available
+        run: |
+          mkdir -p site/theme/assets/stylesheets/
+          # Copy CSS to ensure it's available
+          cp theme/assets/stylesheets/extra.css site/theme/assets/stylesheets/
+          
       - name: Build main platform
         run: mkdocs build
+        
+      - name: Verify build output
+        run: |
+          echo "Checking if CSS was copied to site:"
+          ls -la site/theme/assets/stylesheets/
           
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
