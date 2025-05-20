@@ -5,6 +5,8 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  repository_dispatch:
+    types: [submodule-updated]
   workflow_dispatch:
 
 permissions:
@@ -13,7 +15,31 @@ permissions:
   id-token: write
 
 jobs:
+  check-submodules:
+    runs-on: ubuntu-latest
+    outputs:
+      updated: ${{ steps.check.outputs.updated }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          submodules: recursive
+      
+      - name: Check for submodule updates
+        id: check
+        run: |
+          git submodule update --remote
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "updated=true" >> $GITHUB_OUTPUT
+          else
+            echo "updated=false" >> $GITHUB_OUTPUT
+          fi
+
   build-and-deploy:
+    needs: check-submodules
+    if: ${{ github.event_name != 'repository_dispatch' || needs.check-submodules.outputs.updated == 'true' }}
     runs-on: ubuntu-latest
     
     steps:
@@ -37,6 +63,11 @@ jobs:
         run: |
           mkdir -p docs/assets/stylesheets
           cp theme/assets/stylesheets/extra.css docs/assets/stylesheets/
+      
+      - name: Prepare workspace configuration
+        run: |
+          mkdir -p docs/assets/config
+          cp workspaces.yml docs/assets/config/
           
       - name: Build main platform
         run: mkdocs build
