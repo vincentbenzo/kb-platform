@@ -1,0 +1,227 @@
+/* ================ BASE SELECTOR STYLING ================ */
+.workspace-selector {
+  margin-right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  height: 2.4rem;
+  position: relative;
+}
+
+/* ================ CUSTOM DROPDOWN ELEMENTS ================ */
+.workspace-dropdown-button {
+  appearance: none;
+  border: none;
+  border-radius: 2px;
+  padding: 0.5rem 2rem 0.5rem 0.7rem;
+  font-size: 0.8rem;
+  transition: all 0.25s;
+  font-family: var(--md-text-font-family, "");
+  background-repeat: no-repeat;
+  background-position: right 0.4rem center;
+  background-size: 1rem;
+  min-width: 150px;
+  cursor: pointer;
+}
+
+.workspace-options-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.workspace-option {
+  padding: 0.6rem 0.7rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-size: 0.8rem;
+  font-family: var(--md-text-font-family, "");
+}
+
+/* ================ DARK THEME (SLATE) STYLING ================ */
+[data-md-color-scheme="slate"] .workspace-dropdown-button {
+  background-color: #0f1013;
+  color: var(--md-default-fg-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23fdfdfe' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+[data-md-color-scheme="slate"] .workspace-dropdown-button:hover,
+[data-md-color-scheme="slate"] .workspace-dropdown-button:focus {
+  background-color: #323136;
+  outline: none;
+  box-shadow: none;
+}
+
+[data-md-color-scheme="slate"] .workspace-options-container {
+  background-color: #0f1013;
+  color: var(--md-default-fg-color);
+}
+
+[data-md-color-scheme="slate"] .workspace-option {
+  color: var(--md-default-fg-color);
+}
+
+[data-md-color-scheme="slate"] .workspace-option:hover {
+  background-color: #323136;
+  color: #fdfdfe;
+}
+
+/* ================ LIGHT THEME (DEFAULT) STYLING ================ */
+[data-md-color-scheme="default"] .workspace-dropdown-button {
+  background-color: #2f3c86;
+  color: #bbbfd7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23fdfdfe' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+[data-md-color-scheme="default"] .workspace-dropdown-button:hover,
+[data-md-color-scheme="default"] .workspace-dropdown-button:focus {
+  background-color: #5666be;
+  outline: none;
+  box-shadow: none;
+}
+
+[data-md-color-scheme="default"] .workspace-options-container {
+  background-color: #2f3c86; /* Changed to match dropdown button color */
+  color: #bbbfd7;
+}
+
+[data-md-color-scheme="default"] .workspace-option {
+  color: #bbbfd7;
+}
+
+[data-md-color-scheme="default"] .workspace-option:hover {
+  background-color: #5666be;
+  color: #fdfdfe;
+}
+
+/* ================ RESPONSIVE ADJUSTMENTS ================ */
+@media screen and (max-width: 76.1875em) {
+  .workspace-dropdown-button {
+    min-width: 120px;
+    font-size: 0.7rem;
+    padding: 0.4rem 1.8rem 0.4rem 0.6rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .workspace-dropdown-button {
+    min-width: 100px;
+    font-size: 0.65rem;
+  }
+}/* ================ BASE SELECTOR STYLING ================ */
+.workspace-selector {
+  margin-right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  height: 2.4rem;
+  position: relative;
+}
+
+/* ================ CUSTOM DROPDOWN ELEMENTS ================ */
+.workspace-dropdown-button {
+  appearance: none;
+  border: none;
+  border-radius: 2px;
+  padding: 0.5rem 2rem 0.5rem 0.7rem;
+  font-size: 0.8rem;
+  transition: all 0.25s;
+  font-family: var(--md-text-font-family, "");
+  background-repeat: no-repeat;
+  background-position: right 0.4rem center;
+  background-size: 1rem;
+  min-width: 150px;
+  cursor: pointer;
+}
+
+.workspace-options-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.workspace-option {
+  padding: 0.6rem 0.7rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+/* ================ DARK THEME (SLATE) STYLING ================ */
+[data-md-color-scheme="slate"] .workspace-dropdown-button {
+  background-color: #0f1013;
+  color: var(--md-default-fg-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23fdfdfe' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+[data-md-color-scheme="slate"] .workspace-dropdown-button:hover,
+[data-md-color-scheme="slate"] .workspace-dropdown-button:focus {
+  background-color: #323136;
+  outline: none;
+  box-shadow: none;
+}
+
+[data-md-color-scheme="slate"] .workspace-options-container {
+  background-color: #0f1013;
+  color: var(--md-default-fg-color);
+}
+
+[data-md-color-scheme="slate"] .workspace-option {
+  color: var(--md-default-fg-color);
+}
+
+[data-md-color-scheme="slate"] .workspace-option:hover {
+  background-color: #323136;
+  color: #fdfdfe;
+}
+
+/* ================ LIGHT THEME (DEFAULT) STYLING ================ */
+[data-md-color-scheme="default"] .workspace-dropdown-button {
+  background-color: #2f3c86;
+  color: #bbbfd7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23fdfdfe' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+[data-md-color-scheme="default"] .workspace-dropdown-button:hover,
+[data-md-color-scheme="default"] .workspace-dropdown-button:focus {
+  background-color: #5666be;
+  outline: none;
+  box-shadow: none;
+}
+
+[data-md-color-scheme="default"] .workspace-options-container {
+  background-color: #2f3c86; /* Changed to match dropdown button color */
+  color: #bbbfd7;
+}
+
+[data-md-color-scheme="default"] .workspace-option {
+  color: #bbbfd7;
+}
+
+[data-md-color-scheme="default"] .workspace-option:hover {
+  background-color: #5666be;
+  color: #fdfdfe;
+}
+
+/* ================ RESPONSIVE ADJUSTMENTS ================ */
+@media screen and (max-width: 76.1875em) {
+  .workspace-dropdown-button {
+    min-width: 120px;
+    font-size: 0.7rem;
+    padding: 0.4rem 1.8rem 0.4rem 0.6rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .workspace-dropdown-button {
+    min-width: 100px;
+    font-size: 0.65rem;
+  }
+}

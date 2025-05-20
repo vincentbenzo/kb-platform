@@ -1,0 +1,9 @@
+workspaces:
+  - name: Main
+    url: https://vincentbenzo.github.io/kb-platform/
+  - name: Engineering 
+    url: https://vincentbenzo.github.io/kb-engineering/
+  - name: GRC
+    url: https://vincentbenzo.github.io/kb-grc/
+  - name: Networking
+    url: https://vincentbenzo.github.io/kb-networking/
