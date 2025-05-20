@@ -32,29 +32,26 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          
-      - name: Debug file structure
-        run: |
-          echo "Listing theme directory:"
-          ls -la theme/
-          echo "Listing theme assets directory:"
-          ls -la theme/assets/
-          echo "Checking if CSS file exists:"
-          ls -la theme/assets/stylesheets/
       
-      - name: Ensure CSS is available
+      - name: Prepare CSS from theme
         run: |
-          mkdir -p site/theme/assets/stylesheets/
-          # Copy CSS to ensure it's available
-          cp theme/assets/stylesheets/extra.css site/theme/assets/stylesheets/
+          # Create the directory structure in docs
+          mkdir -p docs/assets/stylesheets
+          
+          # Copy the CSS file from theme to docs
+          cp theme/assets/stylesheets/extra.css docs/assets/stylesheets/
+          
+          # Show the copied CSS file
+          echo "CSS file copied to docs/assets/stylesheets:"
+          ls -la docs/assets/stylesheets/
           
       - name: Build main platform
         run: mkdocs build
         
-      - name: Verify build output
+      - name: Verify CSS in built site
         run: |
-          echo "Checking if CSS was copied to site:"
-          ls -la site/theme/assets/stylesheets/
+          echo "CSS files in the built site:"
+          find site -name "*.css"
           
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
